@@ -28,10 +28,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - uses: ./.github/actions/docker_build
 
-
-    - name: Setup new docker image and list
-      run: docker build . --tag academy:$(date +%s)
+#    - name: Setup new docker image and list
+#      run: docker build . --tag academy:$(date +%s)
         
     - name: List docker images
       run: docker image ls

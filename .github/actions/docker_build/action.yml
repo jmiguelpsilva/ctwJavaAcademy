@@ -1,0 +1,21 @@
+name: docker_build
+description: docker_build
+inputs:
+  path_dockerfile:
+    description: "Dockerfile path"
+    required: false
+    default: "./"
+  filename:
+    description: "Dockerfile name"
+    required: false
+    default: "Dockerfile"
+  tag:
+    description: "Docker Tag"
+    required: false
+    default: "$(date +%s)"
+runs:
+  using: composite
+  steps:
+    - run: |
+        echo "docker build --file ${{inputs.path_dockerfile}}${{inputs.filename}} --tag academy:${{inputs.tag}}"
+      shell: bash
