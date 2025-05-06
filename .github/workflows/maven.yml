@@ -9,12 +9,18 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
-    branches: [ "main" ]
+    inputs:
+      enviroment:
+        description: Environments available
+        required: true
+        default: Test
+        type: choice
+        options:
+          - Test
+          - Int
+          - E2E
+          - Prod
 
 env:
   docker_image_name: academy
