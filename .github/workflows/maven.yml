@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: ${{env.docker_tag_name}}-${{inputs.environment}}
+name: Java CI with Maven
 
 on:
   workflow_dispatch:
