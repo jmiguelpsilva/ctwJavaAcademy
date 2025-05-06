@@ -38,6 +38,8 @@ jobs:
 
   list_docker_images:
 
+    needs: build
+
     runs-on: ubuntu-latest
 
     steps:
