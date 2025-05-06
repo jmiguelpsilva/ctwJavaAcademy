@@ -14,6 +14,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+    docker_image_name: academy
+    docker_tag_name: test
+
 jobs:
   build:
 
@@ -30,8 +34,8 @@ jobs:
         cache: maven
     - uses: ./.github/actions/docker_build
       with:
-        image_name: academy
-        tag: test
+        image_name: $docker_image_name
+        tag: $docker_tag_name
 
 #    - name: Setup new docker image and list
 #      run: docker build . --tag academy:$(date +%s)
