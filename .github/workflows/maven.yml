@@ -72,4 +72,5 @@ jobs:
       with:
         image_name: $docker_image_name
         tag: $docker_tag_name
+        username: ${{ vars.DOCKERHUB_USERNAME }}
 

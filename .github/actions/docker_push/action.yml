@@ -7,10 +7,13 @@ inputs:
   image_name:
     description: "Docker Image Name"
     required: true
+  username:
+    description: "Docker Hub Username"
+    required: true
 runs:
   using: composite
   steps:
     - run: |
-        docker tag ${{inputs.tag}} ${{inputs.image_name}} ${{vars.DOCKERHUB_USERNAME}}:${{inputs.image_name}}:${{inputs.tag}}
-        docker push ${{vars.DOCKERHUB_USERNAME}}:${{inputs.image_name}}:${{inputs.tag}}
+        docker tag ${{inputs.tag}} ${{inputs.image_name}} ${{inputs.username}}:${{inputs.image_name}}:${{inputs.tag}}
+        docker push ${{inputs.username}}:${{inputs.image_name}}:${{inputs.tag}}
       shell: bash
