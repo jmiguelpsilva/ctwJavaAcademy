@@ -1,4 +1,4 @@
-/* package it;
+package it;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ public class CarTest {
 
     @Test
     public void databaseTest() {
-        
+
         given()
                 .when().get("car")
                 .then()
@@ -39,4 +39,4 @@ public class CarTest {
                         containsString("X5"));
     }
 
-} */
+}

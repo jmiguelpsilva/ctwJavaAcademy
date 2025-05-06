@@ -74,3 +74,5 @@ jobs:
         tag: ${{ env.docker_tag_name }}
         username: ${{ vars.DOCKERHUB_USERNAME }}
 
+#    - name: Run Quarkus Tests
+#      run:
