@@ -18,11 +18,24 @@ env:
   docker_image_name: academy
   docker_tag_name: latest
   uploaded_docker_image: academy_docker_image
+  POSTGRES_USERNAME: academy
+  POSTGRES_PASSWORD: academy
+  POSTGRES_DATABASE: postgres
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{env.POSTGRES_USERNAME}}
+          POSTGRES_PASSWORD: ${{env.POSTGRES_PASSWORD}}
+          POSTGRES_DB: ${{env.POSTGRES_DATABASE}}
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v4
