@@ -17,6 +17,7 @@ on:
 env:
     docker_image_name: academy
     docker_tag_name: test
+    uploaded_docker_image: academy_docker_image
 
 jobs:
   build:
@@ -36,6 +37,12 @@ jobs:
       with:
         image_name: $docker_image_name
         tag: $docker_tag_name
+    - name: save Docker image
+      run: docker save -o $docker_image_name.tar $docker_image_name:$docker_tag_name
+    - uses: actions/upload-artifact@v4
+      with:
+        name: $uploaded_docker_image
+        path: $docker_image_name.tar
 
 #    - name: Setup new docker image and list
 #      run: docker build . --tag academy:$(date +%s)
@@ -48,6 +55,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        name: $docker_image_name.tar
     - name: List docker images
       run: docker image ls
 
