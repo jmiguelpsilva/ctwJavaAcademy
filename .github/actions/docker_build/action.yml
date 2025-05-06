@@ -17,5 +17,5 @@ runs:
   using: composite
   steps:
     - run: |
-        echo "docker build --file ${{inputs.path_dockerfile}}${{inputs.filename}} --tag academy:${{inputs.tag}}"
+        docker build --file ${{inputs.path_dockerfile}}${{inputs.filename}} --tag academy:${{inputs.tag}}
       shell: bash
