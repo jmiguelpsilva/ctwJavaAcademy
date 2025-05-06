@@ -68,3 +68,8 @@ jobs:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - uses: ./.github/actions/docker_push
+      with:
+        image_name: $docker_image_name
+        tag: $docker_tag_name
+
