@@ -29,9 +29,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - uses: ./.github/actions/docker_build
+      with:
+        image_name: academy
+        tag: test
 
 #    - name: Setup new docker image and list
 #      run: docker build . --tag academy:$(date +%s)
-        
+
     - name: List docker images
       run: docker image ls

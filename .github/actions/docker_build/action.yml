@@ -9,9 +9,17 @@ inputs:
     description: "Docker Tag"
     required: false
     default: "$(date +%s)"
+  image_name:
+    description: "Docker Image Name"
+    required: true
 runs:
   using: composite
   steps:
     - run: |
-        docker build . --file ${{inputs.path}} --tag academy:${{inputs.tag}}
+        if [ -z "${{ inputs.tag }}" ]; then
+            export TAG=$(date +%s)
+        else
+            export TAG="${{ inputs.tag }}"
+        fi
+        docker build . --file ${{inputs.path}} --tag ${{image_name}}:$TAG
       shell: bash
