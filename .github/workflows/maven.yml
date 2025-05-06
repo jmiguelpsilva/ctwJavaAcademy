@@ -36,5 +36,12 @@ jobs:
 #    - name: Setup new docker image and list
 #      run: docker build . --tag academy:$(date +%s)
 
+  list_docker_images:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
     - name: List docker images
       run: docker image ls
+
