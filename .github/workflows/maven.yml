@@ -42,7 +42,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: ${{env.uploaded_docker_image}}
-        path: ${{env.docker_image_name}}.tag
+        path: ${{env.docker_image_name}}.tar
 
 #    - name: Setup new docker image and list
 #      run: docker build . --tag academy:$(date +%s)
