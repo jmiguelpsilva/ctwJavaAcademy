@@ -1,11 +1,7 @@
 name: docker_build
 description: docker_build
 inputs:
-  path_dockerfile:
-    description: "Dockerfile path"
-    required: false
-    default: "./"
-  filename:
+  path:
     description: "Dockerfile name"
     required: false
     default: "Dockerfile"
@@ -17,5 +13,5 @@ runs:
   using: composite
   steps:
     - run: |
-        docker build --file ${{inputs.path_dockerfile}}${{inputs.filename}} --tag academy:${{inputs.tag}}
+        docker build . --file ${{inputs.path}} --tag academy:${{inputs.tag}}
       shell: bash
