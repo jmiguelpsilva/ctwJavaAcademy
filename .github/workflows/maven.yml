@@ -60,9 +60,9 @@ jobs:
     - uses: ./.github/actions/docker_build
       with:
         image_name: $docker_image_name
-        tag: $docker_tag_name
+        tag: ${{env.docker_tag_name}}-${{inputs.environment}}
     - name: save Docker image
-      run: docker save -o $docker_image_name.tar $docker_image_name:$docker_tag_name
+      run: docker save -o $docker_image_name.tar $docker_image_name:${{env.docker_tag_name}}-${{inputs.environment}}
     - uses: actions/upload-artifact@v4
       with:
         name: ${{ env.uploaded_docker_image }}
@@ -95,7 +95,7 @@ jobs:
     - uses: ./.github/actions/docker_push
       with:
         image_name: ${{ env.docker_image_name }}
-        tag: ${{ env.docker_tag_name }}
+        tag: ${{env.docker_tag_name}}-${{inputs.environment}}
         username: ${{ vars.DOCKERHUB_USERNAME }}
 
 #    - name: Run Quarkus Tests
