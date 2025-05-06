@@ -8,6 +8,8 @@
 
 name: Java CI with Maven
 
+run-name: Docker build and push to ${{inputs.environment}}
+
 on:
   workflow_dispatch:
     inputs:
@@ -24,7 +26,7 @@ on:
 
 env:
   docker_image_name: academy
-  docker_tag_name: latest
+  docker_tag_name: ${{env.docker_tag_name}}-${{inputs.environment}}
   uploaded_docker_image: academy_docker_image
   POSTGRES_USERNAME: academy
   POSTGRES_PASSWORD: academy
