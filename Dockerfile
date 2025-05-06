@@ -5,7 +5,7 @@ COPY pom.xml ./pom.xml
 
 RUN mvn dependency:go-offline
 
-COPY base_code .
+COPY . .
 
 RUN mvn -Dmaven.test.skip -Dquarkus.profile=docker clean package
 
